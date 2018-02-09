@@ -1,0 +1,146 @@
+<html>
+<head>
+ <title>BMI</title>
+ <style>
+ body{
+ background-color:#044344;
+ }
+ .form-submit-button {
+background: #0acacd;;
+color: white;
+border-style: outset;
+font-family: "Roboto", sans-serif;
+border-color: #0066A2;
+height: 40px;
+width: 140px;
+border-radius:40px;
+font-size: 18px;
+ margin-top: -0.5em;
+  padding: 8px;
+  color: #FFFFFF;
+}
+ input[type=text], select {
+    width: 280px;
+    padding: 10px 2px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+	font-size:15px;
+}
+input[type=text].height2{
+    width: 135px;
+    padding: 10px 2px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+	font-size:15px;
+}
+ #container{
+   position:relative;
+  }
+  #child1{
+  position:absolute;
+  right:20;
+  top:20;
+  }
+  #child2{
+  position:absolute;
+  left:20;
+  top:20;
+  height:60;
+  width:540;
+  border-radius:10px;
+  background-color:#0acacd;
+  text-align:center;
+  }
+  #child3{
+  position:absolute;
+  left:20;
+  top:160;
+  border-radius:10px;
+  width:500;
+  height:360;
+     padding-left:50px;
+     padding-top:20px;
+    background: rgba(204, 204, 204, 0.3);
+  }
+  #select-wt{
+  height:40;
+  width:80;
+  margin-left:10px;
+  }
+  #select-ht{
+  height:40;
+  width:100;
+  margin-left:10px;
+  }
+</style>
+<script>
+function myFunction() {
+    var x = document.getElementById("form");
+    var weight = parseFloat(x.elements[0].value);
+    var height = parseFloat(x.elements[2].value);
+	var WO = document.getElementById("select-wt");
+	if(WO.options[WO.selectedIndex].value == "Pounds"){
+		weight*=0.453592;
+	}
+	var HO = document.getElementById("select-ht");
+	if(HO.options[HO.selectedIndex].value == "feet"){
+		height*=0.3048;
+	}
+    var bmi =  weight/(height*height);
+    document.getElementById("result").innerHTML = "Your BMI is " + bmi;
+   }
+function showDiv(elem){
+   if(elem.value == "ftin")
+    {
+      document.getElementById("height1").style.display = "none";
+	document.getElementById("height2").style.display = "block"
+    }
+   else
+    {
+	document.getElementById("height2").style.display = "none";
+	document.getElementById("height1").style.display = "block"
+    }
+}
+</script>
+</head>
+ <body>
+  <div id = "container">
+  <div id = "child1">
+  <img src = "bmiimg.jpg" height = "200" width = "600">
+  </div>
+  <div id = "child2">
+     <h2>Calculate Your BMI Now!</h2>
+  </div>
+    <div id = "child3">
+    <form id ="form">
+       <input type = "text" placeholder = "weight" id = "weight"> 
+	   <select id = "select-wt">
+		<option value="kgs">Kgs</option>
+		<option value="Pounds">Pounds</option>
+	   </select>
+       <br><br><br>
+       <input type = "text" placeholder = "height" id = "height1"> 
+	<div id = "height2" style = "display:none"> 
+	<input class = "height2" type = "text" placeholder = "feet" id = "feet1">
+	<input class = "height2" type = "text" placeholder = "inches" id = "inches" style="margin-left: 8px;">
+	</div>
+	<!--<script>showDiv(this);</script>-->
+	   <select id = "select-ht" onchange="showDiv(this)">
+		<option value="meters">Meters</option>
+		<option value="feet">Feet</option>
+		<option value = "ftin">Feet-Inches</option>
+	   </select>
+       <br><br><br>
+        <button class="form-submit-button" onClick = "myFunction(); return false";>Calculate</button>
+        <br><br><br>
+    </form>
+	<p id ="result" style="font-size:20px"></p>
+    </div>
+  </div>
+  </body>
+  </html>
