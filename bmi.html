@@ -94,18 +94,6 @@ function myFunction() {
     var bmi =  weight/(height*height);
     document.getElementById("result").innerHTML = "Your BMI is " + bmi;
    }
-function showDiv(elem){
-   if(elem.value == "ftin")
-    {
-      document.getElementById("height1").style.display = "none";
-	document.getElementById("height2").style.display = "block"
-    }
-   else
-    {
-	document.getElementById("height2").style.display = "none";
-	document.getElementById("height1").style.display = "block"
-    }
-}
 </script>
 </head>
  <body>
@@ -125,15 +113,9 @@ function showDiv(elem){
 	   </select>
        <br><br><br>
        <input type = "text" placeholder = "height" id = "height1"> 
-	<div id = "height2" style = "display:none"> 
-	<input class = "height2" type = "text" placeholder = "feet" id = "feet1">
-	<input class = "height2" type = "text" placeholder = "inches" id = "inches" style="margin-left: 8px;">
-	</div>
-	<!--<script>showDiv(this);</script>-->
-	   <select id = "select-ht" onchange="showDiv(this)">
+	   <select id = "select-ht">
 		<option value="meters">Meters</option>
 		<option value="feet">Feet</option>
-		<option value = "ftin">Feet-Inches</option>
 	   </select>
        <br><br><br>
         <button class="form-submit-button" onClick = "myFunction(); return false";>Calculate</button>
